@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 interface ContextTypes {
   color: string;
@@ -10,7 +10,17 @@ interface ContextTypes {
 const AppContext = createContext<undefined | ContextTypes>(undefined);
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const [color, setColor] = useState('#65e07d');
+  const [color, setColorState] = useState('#464168');
+
+  useEffect(() => {
+    const savedColor = localStorage.getItem('my-background-color');
+    if (savedColor) setColorState(savedColor);
+  }, []);
+
+  const setColor = (newColor: string) => {
+    setColorState(newColor);
+    localStorage.setItem('my-background-color', newColor);
+  };
 
   return (
     <AppContext.Provider value={{ color, setColor }}>
@@ -20,6 +30,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default AppProvider;
+
 export const useAppContext = () => {
   const context = useContext(AppContext);
   if (context === undefined) {
