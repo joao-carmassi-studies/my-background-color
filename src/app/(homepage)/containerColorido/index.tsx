@@ -22,7 +22,7 @@ const ContainerColorido = () => {
 
           body::-webkit-scrollbar-track {
             background: var(--sb-track-color);
-            border-radius: 12px;
+            border-radius: 0px;
           }
 
           body::-webkit-scrollbar-thumb {
