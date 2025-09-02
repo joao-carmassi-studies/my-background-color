@@ -12,7 +12,7 @@
 Clone o repositório e instale as dependências:
 
 ```bash
-git clone https://github.com/joao-carmassi/my-background-color
+git clone https://github.com/joao-carmassi-studies/my-background-color
 cd my-background-color
 npm install
 ```
